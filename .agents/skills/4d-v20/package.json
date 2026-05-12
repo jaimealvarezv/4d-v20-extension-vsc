@@ -1,0 +1,8 @@
+{
+  "name": "4d-development-skill-v20",
+  "version": "1.0.0",
+  "description": "Comprehensive 4D v20 development skill with embedded documentation.",
+  "skills": [
+    { "name": "4d-v20", "entry": "SKILL.md" }
+  ]
+}

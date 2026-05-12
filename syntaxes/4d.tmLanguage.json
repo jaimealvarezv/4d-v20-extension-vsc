@@ -1,0 +1,172 @@
+{
+	"name": "4D",
+	"scopeName": "source.4d",
+	"fileTypes": [
+		"4dm",
+		"4d",
+		"4dproject",
+		"4dform"
+	],
+	"patterns": [
+		{ "include": "#comments" },
+		{ "include": "#strings" },
+		{ "include": "#commands-sql" },
+		{ "include": "#commands-control" },
+		{ "include": "#commands-query" },
+		{ "include": "#commands-builtin" },
+		{ "include": "#keywords-other" },
+		{ "include": "#constants" },
+		{ "include": "#variables" },
+		{ "include": "#tables-fields" },
+		{ "include": "#operators" },
+		{ "include": "#support" }
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.double-slash.4d",
+					"match": "//.*$"
+				},
+				{
+					"name": "comment.block.4d",
+					"begin": "/\\*",
+					"end": "\\*/"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.4d",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.4d",
+							"match": "\\\\."
+						}
+					]
+				}
+			]
+		},
+		"commands-sql": {
+			"patterns": [
+				{
+					"name": "keyword.other.sql.begin.4d",
+					"match": "\\b(?i)(Begin SQL)\\b"
+				},
+				{
+					"name": "keyword.other.sql.end.4d",
+					"match": "\\b(?i)(End SQL)\\b"
+				},
+				{
+					"name": "keyword.other.sql.4d",
+					"match": "\\b(?i)(SELECT|FROM|WHERE|ORDER BY|GROUP BY|HAVING|INSERT|INTO|VALUES|UPDATE|SET|DELETE|CREATE|DROP|ALTER|TABLE|INDEX|DISTINCT|ALL|AND|OR|NOT|NULL|IS|LIKE|BETWEEN|IN|EXISTS|JOIN|INNER|LEFT|RIGHT|FULL|ON|CROSS|NATURAL|UNION|EXCEPT|INTERSECT|LIMIT|OFFSET|AS|CAST|CASE|WHEN|THEN|ELSE|END)\\b"
+				}
+			]
+		},
+		"commands-control": {
+			"patterns": [
+				{
+					"name": "keyword.control.4d",
+					"match": "\\b(?i)(If|Else|End if|Case of|End case|While|End while|For|End for|For each|End for each|Repeat|Until|Use|End use|Return|Break|Continue)\\b"
+				}
+			]
+		},
+        "commands-query": {
+            "patterns": [
+                {
+                    "name": "keyword.other.query.4d",
+                    "match": "\\b(?i)(QUERY|QUERY BY FORMULA|QUERY SELECTION|QUERY SELECTION BY FORMULA)\\b"
+                }
+            ]
+        },
+        "commands-builtin": {
+             "patterns": [
+                {
+                    "name": "support.function.builtin.4d",
+                    "match": "\\b(?i)(Alert|String|Num|Date|Time|Bool|Object|Collection|New object|New collection|ALL RECORDS|READ ONLY|READ WRITE|ORDER BY|CREATE RECORD|SAVE RECORD|DELETE RECORD|Search|Open window|Close window|DIALOG|CONFIRM|Request|Get pointer|Get process variable|SET PROCESS VARIABLE|Current process|Process info|DELAY PROCESS|PAUSE PROCESS|RESUME PROCESS|TRACE|LOG FILE|Opener|Get database parameter|SET DATABASE PARAMETER|Get 4D folder|System folder|Temporary folder|Test path name|Delete document|Copy document|Move document|Get document size|Get document properties|Set document properties|Open document|Create document|Append document|CLOSE DOCUMENT|RECEIVE PACKET|SEND PACKET|Get packet size|Set packet size|Get pointer|Count parameters|Param count|Copy parameters|Clear variable|Is nil pointer|Is defined|Type|Undefined)\\b"
+                }
+             ]
+        },
+		"keywords-other": {
+			"patterns": [
+				{
+					"name": "keyword.other.declaration.4d",
+					"match": "\\b(?i)(var|C_TEXT|C_LONGINT|C_REAL|C_DATE|C_TIME|C_BOOLEAN|C_OBJECT|C_COLLECTION|C_POINTER|C_BLOB|C_VARIANT|ARRAY TEXT|ARRAY LONGINT|ARRAY REAL|ARRAY DATE|ARRAY TIME|ARRAY BOOLEAN|ARRAY OBJECT|ARRAY POINTER|ARRAY BLOB)\\b"
+				},
+				{
+					"name": "keyword.other.class.4d",
+					"match": "\\b(?i)(Class|extends|Function|constructor|property|This|Super)\\b"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.language.4d",
+					"match": "\\b(?i)(True|False|Null)\\b"
+				},
+				{
+					"name": "constant.numeric.4d",
+					"match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+				}
+			]
+		},
+		"variables": {
+			"patterns": [
+				{
+					"name": "variable.parameter.4d",
+					"match": "(\\$\\d+)"
+				},
+                {
+                    "name": "variable.language.4d",
+                     "match": "(\\$\\w+)"
+                },
+				{
+					"name": "variable.other.interprocess.4d",
+					"match": "<>\\w+"
+				}
+			]
+		},
+		"tables-fields": {
+			"patterns": [
+				{
+					"name": "meta.table-field.4d",
+					"match": "(\\[)([^\\]]+)(\\])(\\w+)?",
+					"captures": {
+						"1": { "name": "punctuation.definition.table.begin.4d" },
+						"2": { "name": "entity.name.table.4d" },
+						"3": { "name": "punctuation.definition.table.end.4d" },
+						"4": { "name": "variable.other.member.4d" }
+					}
+				}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{
+					"name": "keyword.operator.4d",
+					"match": ":=|#|<=|>=|<|>|=|\\+|\\-|\\*|\\/|\\?\\?"
+				},
+                {
+                    "name": "keyword.operator.logical.4d",
+                    "match": "\\b(?i)(AND|OR|NOT)\\b"
+                }
+			]
+		},
+		"support": {
+			"patterns": [
+				{
+					"name": "support.class.4d",
+					"match": "\\b(?i)(cs|ds|Storage|Entity|EntitySelection|File|Folder|Session|4D|System)\\b"
+				},
+				{
+					"name": "entity.name.function.method.4d",
+					"match": "\\b[A-Z][a-zA-Z0-9_ ]*\\b"
+				}
+			]
+		}
+	}
+}

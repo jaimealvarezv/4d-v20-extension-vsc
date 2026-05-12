@@ -1,0 +1,114 @@
+{
+  "Method Header": {
+    "prefix": "method",
+    "body": [
+      "//%attributes = {}",
+      "#DECLARE(${1:params}) -> ${2:return}",
+      "",
+      "var ${3:$name} : ${4:Type}",
+      "$0"
+    ],
+    "description": "Standard 4D v20 Method Header"
+  },
+  "If Block": {
+    "prefix": "if",
+    "body": [
+      "If (${1:condition})",
+      "\t$0",
+      "End if"
+    ],
+    "description": "If block"
+  },
+  "If Else Block": {
+    "prefix": "ifelse",
+    "body": [
+      "If (${1:condition})",
+      "\t$2",
+      "Else",
+      "\t$0",
+      "End if"
+    ],
+    "description": "If-Else block"
+  },
+  "For Each": {
+    "prefix": "foreach",
+    "body": [
+      "For each ($${1:item}; $${2:collection})",
+      "\t$0",
+      "End for each"
+    ],
+    "description": "For Each loop (Modern)"
+  },
+  "For Loop": {
+    "prefix": "for",
+    "body": [
+      "For ($${1:i}; ${2:1}; ${3:limit})",
+      "\t$0",
+      "End for"
+    ],
+    "description": "Standard For loop"
+  },
+  "While Loop": {
+    "prefix": "while",
+    "body": [
+      "While (${1:condition})",
+      "\t$0",
+      "End while"
+    ],
+    "description": "While loop"
+  },
+  "Case Of": {
+    "prefix": "case",
+    "body": [
+      "Case of",
+      "\t: (${1:condition})",
+      "\t\t$2",
+      "\tElse",
+      "\t\t$0",
+      "End case"
+    ],
+    "description": "Case of block"
+  },
+  "Class Definition": {
+    "prefix": "class",
+    "body": [
+      "Class constructor",
+      "",
+      "Function ${1:name}()",
+      "\t$0"
+    ],
+    "description": "Class definition structure"
+  },
+  "ORDA Query": {
+    "prefix": "query",
+    "body": [
+      "ds.${1:Table}.query(\"${2:attribute} = :1\"; ${3:$value})"
+    ],
+    "description": "ORDA Query with placeholder"
+  },
+  "Selection to Collection": {
+    "prefix": "tocol",
+    "body": [
+      "$${1:col} := ds.${2:Table}.all().toCollection()"
+    ],
+    "description": "Get all records as collection"
+  },
+  "On Err Call": {
+    "prefix": "onerr",
+    "body": [
+      "ON ERR CALL(\"${1:ErrorHandler}\")",
+      "$0",
+      "ON ERR CALL(\"\")"
+    ],
+    "description": "Error handling block"
+  },
+  "Use (Signal)": {
+    "prefix": "use",
+    "body": [
+      "Use (${1:SharedObject})",
+      "\t$0",
+      "End use"
+    ],
+    "description": "Use block for preemptive/shared objects"
+  }
+}
